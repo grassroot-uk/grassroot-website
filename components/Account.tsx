@@ -1,4 +1,8 @@
-import { Button, useColorModeValue } from "@chakra-ui/react";
+import {
+  Button,
+  useBreakpointValue,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useWeb3React } from "@web3-react/core";
 import { UserRejectedRequestError } from "@web3-react/injected-connector";
 import { useEffect, useState } from "react";
@@ -6,8 +10,8 @@ import { injected } from "../connectors";
 import useENSName from "../hooks/useENSName";
 import useMetaMaskOnboarding from "../hooks/useMetaMaskOnboarding";
 import { formatEtherscanLink, shortenHex } from "../util";
-
-import MetamaskIcon from "../icons/metamask";
+import { Link } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 type AccountProps = {
   triedToEagerConnect: boolean;
@@ -61,13 +65,17 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
                 }
               });
             }}
-            bg={useColorModeValue("brand.700", "brand.600")}
-            color={useColorModeValue("white", "white")}
+            bg={"white"}
+            color={"brand.700"}
+            border={"1px"}
+            borderRadius={"50px"}
+            borderColor={useColorModeValue("brand.700", "white")}
             minH={"30px"}
             py={{ base: 2 }}
             px={{ base: 4 }}
             _hover={{
-              bg: useColorModeValue("brand.900", "brand.500"),
+              bg: useColorModeValue("brand.700", "brand.500"),
+              color: "white",
             }}
           >
             {isMetaMaskInstalled ? "Connect Metamask" : "Connect to Wallet"}
@@ -91,16 +99,17 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
   }
 
   return (
-    <a
-      {...{
-        href: formatEtherscanLink("Account", [chainId || 1, account]),
-        target: "_blank",
-        rel: "noopener noreferrer",
-      }}
-      className="flex items-center py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+    <Link
+      href={formatEtherscanLink("Account", [chainId || 1, account])}
+      target={"_blank"}
+      minW={"auto"}
+      rel={"noopener noreferrer"}
+      color={useColorModeValue("brand.700", "brand.500")}
     >
-      {ENSName || `${shortenHex(account, 4)}`}
-    </a>
+      {ENSName ||
+        `${shortenHex(account, 4)}`}{" "}
+      <ExternalLinkIcon />
+    </Link>
   );
 };
 

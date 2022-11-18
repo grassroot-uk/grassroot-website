@@ -7,7 +7,7 @@ const colors = {
     1000: "#3B7328",
     900: "#5BB23F",
     700: "#0CC765",
-    400: "#97DF7C"
+    400: "#97DF7C",
   },
   brandBackground: {
     900: "#2C4355",
@@ -17,5 +17,11 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const theme = extendTheme({
+  colors,
+  fonts: {
+    heading: `'Inter', sans-serif`,
+    body: `'Inter', sans-serif`,
+  },
+});
 export default theme;

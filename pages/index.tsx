@@ -1,12 +1,18 @@
 import Head from "next/head";
-import Image from "next/image";
 
-import { Container } from '@chakra-ui/react'
 import Navbar from "../components/Navbar";
+import HomeBody from "../components/HomeBody";
 
 export default function Home() {
   return (
-    <div>
+    <div
+      style={{
+        background: `url("/bg.png")`,
+        minHeight: "100vh",
+        backgroundSize: "100%",
+        backgroundPosition: "left top",
+      }}
+    >
       <Head>
         <title>Grassroot</title>
         <meta
@@ -16,6 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <HomeBody />
     </div>
   );
 }
