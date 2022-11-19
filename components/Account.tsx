@@ -69,12 +69,12 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
             color={"brand.700"}
             border={"1px"}
             borderRadius={"50px"}
-            borderColor={useColorModeValue("brand.700", "white")}
+            borderColor={"brand.700"}
             minH={"30px"}
             py={{ base: 2 }}
             px={{ base: 4 }}
             _hover={{
-              bg: useColorModeValue("brand.700", "brand.500"),
+              bg: "brand.700",
               color: "white",
             }}
           >
@@ -82,12 +82,12 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
           </Button>
         ) : (
           <Button
-            bg={useColorModeValue("brand.700", "brand.600")}
-            color={useColorModeValue("white", "white")}
+            bg={"brand.700"}
+            color={"white"}
             minH={"30px"}
             px={{ base: 4 }}
             _hover={{
-              bg: useColorModeValue("brand.900", "brand.500"),
+              bg: "brand.900",
             }}
             onClick={startOnboarding}
           >
@@ -104,11 +104,9 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
       target={"_blank"}
       minW={"auto"}
       rel={"noopener noreferrer"}
-      color={useColorModeValue("brand.700", "brand.500")}
+      color={"brand.700"}
     >
-      {ENSName ||
-        `${shortenHex(account, 4)}`}{" "}
-      <ExternalLinkIcon />
+      {ENSName || `${shortenHex(account, 4)}`} <ExternalLinkIcon />
     </Link>
   );
 };

@@ -12,12 +12,13 @@ export type IFeatureCard = {
   heading: string;
   subText: string;
   img: any;
+  imgStyles: any;
 };
 
-const FeatureCard: React.FC<IFeatureCard> = ({ heading, subText, img }) => {
+const FeatureCard: React.FC<IFeatureCard> = ({ heading, subText, img, imgStyles }) => {
   return (
-    <Card h={"350px"} overflow={"hidden"} bg={"white"} >
-      <CardBody>
+    <Card h={"350px"} overflow={"hidden"} bg={"white"}>
+      <CardBody zIndex={2}>
         <Heading
           textAlign={"center"}
           fontSize={useBreakpointValue({ base: "xl", md: "2xl" })}
@@ -37,7 +38,7 @@ const FeatureCard: React.FC<IFeatureCard> = ({ heading, subText, img }) => {
           {subText}
         </Text>
       </CardBody>
-      <Image src={img} alt={heading} />
+      <Image src={img} alt={heading} style={{...imgStyles}}/>
     </Card>
   );
 };

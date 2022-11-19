@@ -22,11 +22,13 @@ export function formatEtherscanLink(
   switch (type) {
     case "Account": {
       const [chainId, address] = data;
-      return `https://${ETHERSCAN_PREFIXES[chainId]}etherscan.io/address/${address}`;
+      const prefix = ETHERSCAN_PREFIXES[chainId as keyof typeof ETHERSCAN_PREFIXES] as string;
+      return `https://${prefix}etherscan.io/address/${address}`;
     }
     case "Transaction": {
       const [chainId, hash] = data;
-      return `https://${ETHERSCAN_PREFIXES[chainId]}etherscan.io/tx/${hash}`;
+      const prefix = ETHERSCAN_PREFIXES[chainId as keyof typeof ETHERSCAN_PREFIXES] as string;
+      return `https://${prefix}etherscan.io/tx/${hash}`;
     }
   }
 }

@@ -12,6 +12,9 @@ import {
   InputRightElement,
   Input,
   InputGroup,
+  FormErrorMessage,
+  FormControl,
+  CircularProgress,
 } from "@chakra-ui/react";
 
 import register from "../public/register.png";
@@ -27,37 +30,68 @@ const services = [
     subText:
       "Set up your DAOs as legal entities overseas and protect your community",
     img: register,
+    imgStyles: { marginTop: "-200px", zIndex: 0 },
   },
   {
     heading: "Fundraise",
     subText: "Raise money for a cause in an open and transparent manner",
     img: fundraise,
+    imgStyles: { marginTop: "-50px", zIndex: 0 },
   },
   {
     heading: "Communicate",
     subText:
       "Communicate with your community in a secure and decentralized way",
     img: communicate,
+    imgStyles: { marginTop: "-20px", zIndex: 0 },
   },
   {
     heading: "Manage",
     subText:
       "Manage your DAOs treasury by setting up streaming services for different purposes",
     img: manage,
+    imgStyles: { marginTop: "-20px", zIndex: 0 },
   },
 ];
 
 const HomeBody = () => {
   const [email, setEmail] = React.useState("");
+  const [error, setError] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
   const handleChange = (event: any) => setEmail(event.target.value);
 
   const { account } = useWeb3React();
 
+  const emailValidation = (emailStr: string) => {
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    if (regEx.test(emailStr)) {
+      setError("");
+      return true;
+    } else {
+      setError("Enter a valid email address");
+      return false;
+    }
+  };
+
   const handleSubmitEmail = () => {
     if (!account) {
-      window.alert("Connect Metamask!!");
+      setError("Connect Your Metamask First");
+      return;
     }
+    setError("");
     console.log(email);
+    if (emailValidation(email)) {
+      setIsLoading(true);
+      // Do send to API
+      const finalObj = {
+        account: account,
+        email: email,
+      };
+      console.log(finalObj);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -83,37 +117,50 @@ const HomeBody = () => {
           Subtitle Here...
         </Text>
         <Box my={useBreakpointValue({ base: "50px", lg: "70px" })} px={"10px"}>
-          <InputGroup size="lg">
-            <Input
-              pr="4.5rem"
-              borderRadius={"50px"}
-              type={"email"}
-              placeholder="Enter your email.."
-              value={email}
-              onChange={handleChange}
-              background={"white"}
-            />
-            <InputRightElement width="6.5rem">
-              <Button
-                bg={useColorModeValue("brand.700", "brand.500")}
-                color={"white"}
-                border={"1px"}
+          <FormControl isInvalid={error.length !== 0}>
+            <InputGroup size="lg">
+              <Input
+                pr="4.5rem"
                 borderRadius={"50px"}
-                minH={"30px"}
-                py={{ base: 2 }}
-                px={{ base: 4 }}
-                fontWeight={"normal"}
-                _hover={{
-                  color: useColorModeValue("brand.700", "brand.500"),
-                  bg: "white",
-                  borderColor: useColorModeValue("brand.700", "white"),
-                }}
-                onClick={handleSubmitEmail}
-              >
-                Sign Up
-              </Button>
-            </InputRightElement>
-          </InputGroup>
+                type={"email"}
+                placeholder="Enter your email.."
+                value={email}
+                onChange={handleChange}
+                background={"white"}
+              />
+
+              <InputRightElement width="6.5rem">
+                {isLoading ? (
+                  <CircularProgress
+                    isIndeterminate
+                    color="brand.700"
+                    size={"34px"}
+                    thickness={16}
+                  />
+                ) : (
+                  <Button
+                    bg={"brand.700"}
+                    color={"white"}
+                    border={"1px"}
+                    borderRadius={"50px"}
+                    minH={"30px"}
+                    py={{ base: 2 }}
+                    px={{ base: 4 }}
+                    fontWeight={"normal"}
+                    _hover={{
+                      color: "brand.700",
+                      bg: "white",
+                      borderColor: "brand.700",
+                    }}
+                    onClick={handleSubmitEmail}
+                  >
+                    Sign Up
+                  </Button>
+                )}
+              </InputRightElement>
+            </InputGroup>
+            {error && <FormErrorMessage>{error}</FormErrorMessage>}
+          </FormControl>
         </Box>
       </Flex>
       <Flex alignItems={"center"} justifyContent={"center"}>
@@ -129,11 +176,12 @@ const HomeBody = () => {
           >
             {services.map((service, index) => {
               return (
-                <GridItem w="100%">
+                <GridItem w="100%" key={index}>
                   <FeatureCard
                     heading={service.heading}
                     img={service.img}
                     subText={service.subText}
+                    imgStyles={service.imgStyles}
                   />
                 </GridItem>
               );

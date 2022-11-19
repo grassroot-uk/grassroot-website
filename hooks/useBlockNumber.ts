@@ -2,9 +2,9 @@ import type { Web3Provider } from "@ethersproject/providers";
 import { useWeb3React } from "@web3-react/core";
 import useSWR from "swr";
 
-function getBlockNumber(library: Web3Provider) {
+function getBlockNumber(library: Web3Provider | undefined) {
   return async () => {
-    return library.getBlockNumber();
+    if (library) return library.getBlockNumber();
   };
 }
 
