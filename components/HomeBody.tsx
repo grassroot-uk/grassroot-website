@@ -74,7 +74,7 @@ const HomeBody = () => {
     }
   };
 
-  const handleSubmitEmail = () => {
+  const handleSubmitEmail = async () => {
     if (!account) {
       setError("Connect Your Metamask First");
       return;
@@ -84,15 +84,26 @@ const HomeBody = () => {
     if (emailValidation(email)) {
       setIsLoading(true);
       // Do send to API
-      const finalObj = {
+      const data = {
         account: account,
         email: email,
       };
-      console.log(finalObj);
-      setTimeout(() => {
-        setIsLoading(false);
+      console.log(data);
+
+      const response = await fetch("/api/sendmail", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      const res = await response.json();
+
+      if (res.error) {
+        setError(res.error);
+      } else {
         setIsSent(true);
-      }, 3000);
+      }
+
+      setIsLoading(false);
     }
   };
 
@@ -134,7 +145,7 @@ const HomeBody = () => {
               fontSize={subTitleFontSize}
               color={"brand.700"}
             >
-              Your will hear from us shortly. Check your email.
+              Thankyou for signing up. We will keep you updated about grassroot.
             </Text>
           ) : (
             <FormControl isInvalid={error.length !== 0}>
