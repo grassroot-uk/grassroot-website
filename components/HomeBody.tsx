@@ -140,7 +140,12 @@ const HomeBody = () => {
               Metamask users will get exclusive access ot new features and alpha
               releases for grassroot.
             </Text>
-            <Text mt={"1rem"} fontSize={"sm"} color={"subtle"}>
+            <Text
+              mt={"1rem"}
+              fontSize={"sm"}
+              color={"subtle"}
+              wordBreak={"break-all"}
+            >
               Totally Optional, You can skip.
             </Text>
           </ModalBody>
@@ -153,8 +158,11 @@ const HomeBody = () => {
                 setMetamaskOptional(true);
                 onClose();
               }}
+              p={{ base: 4, lg: 6 }}
+              wordBreak={"break-word"}
             >
-              Continue without account.
+              Continue without <br />
+              account.
             </Button>
             <Button
               backgroundColor={"brand.700"}
@@ -165,9 +173,11 @@ const HomeBody = () => {
                 borderColor: "brand.700",
                 color: "brand.700",
               }}
+              p={{ base: 4, lg: 6 }}
               onClick={onClose}
+              wordBreak={"break-all"}
             >
-              Sure, Count me In.
+              Sure, <br /> Count me In.
             </Button>
           </ModalFooter>
         </ModalContent>

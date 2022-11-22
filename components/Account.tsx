@@ -14,6 +14,7 @@ import useMetaMaskOnboarding from "../hooks/useMetaMaskOnboarding";
 import { formatEtherscanLink, shortenHex } from "../util";
 import { Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { GrInstallOption, GrConnectivity, GrConnect } from "react-icons/gr";
 import { FaAddressCard } from "react-icons/fa";
 
 type AccountProps = {
@@ -88,7 +89,17 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
               color: "white",
             }}
           >
-            {isMetaMaskInstalled ? "Connect Metamask" : "Connect to Wallet"}
+            {isMetaMaskInstalled ? (
+              !isLessThan370 ? (
+                "Connect Metamask"
+              ) : (
+                <GrConnectivity color={"white"} fontSize="1.25rem" />
+              )
+            ) : !isLessThan370 ? (
+              "Connect to Wallet"
+            ) : (
+              <GrConnect color={brandHexColor} fontSize="1.25rem" />
+            )}
           </Button>
         ) : (
           <Button
@@ -101,7 +112,11 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
             }}
             onClick={startOnboarding}
           >
-            Install Metamask
+            {isLessThan370 ? (
+              <GrInstallOption color={brandHexColor} fontSize="1.25rem" />
+            ) : (
+              "Install Metamask"
+            )}
           </Button>
         )}
       </div>
@@ -117,10 +132,7 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
       color={"brand.700"}
     >
       {isLessThan370 ? (
-        <FaAddressCard
-          color={brandHexColor}
-          fontSize="1.25rem"
-        />
+        <FaAddressCard color={brandHexColor} fontSize="1.25rem" />
       ) : (
         ENSName || shortenHex(account, 4)
       )}
