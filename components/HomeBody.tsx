@@ -35,7 +35,7 @@ const services = [
   {
     heading: "Register",
     subText:
-      "Set up your DAOs as legal entities overseas and protect your community",
+      "Set up your DAOs as legal entities and protect your community",
     img: register,
     imgStyles: { marginTop: "-200px", zIndex: 0 },
   },

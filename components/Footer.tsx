@@ -25,8 +25,8 @@ const Footer = () => (
     py={{ base: "6", md: "8" }}
     px={{ base: "6", md: "8" }}
   >
-    <Stack spacing={{ base: "4", md: "5" }}>
-      <Stack justify="space-between" direction="row" align="center">
+    <Stack spacing={{ base: "4", md: "5" }} justify="center" align={"center"}>
+      <Stack justify="center" direction="row" align="center">
         <GrassrootIcon />
         <ButtonGroup variant="ghost">
           {/* <IconButton
@@ -51,14 +51,14 @@ const Footer = () => (
         </ButtonGroup>
       </Stack>
       <Stack>
-        <Text fontSize="sm" color="subtle">
-          Contact use at{" "}
+        <Text fontSize="sm" color="subtle" textAlign={"center"}>
+          Contact us @{" "}
           <Link color={"brand.900"} href="mailto:team@grassroot.uk">
             team@grassroot.uk
           </Link>{" "}
           to know more.
         </Text>
-        <Text fontSize="sm" color="subtle">
+        <Text fontSize="sm" color="subtle" textAlign={"center"}>
           &copy; {new Date().getFullYear()} Grassroot Inc. All rights reserved.
         </Text>
       </Stack>
