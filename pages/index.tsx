@@ -2,12 +2,13 @@ import Head from "next/head";
 
 import Navbar from "../components/Navbar";
 import HomeBody from "../components/HomeBody";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
     <div
       style={{
-        background: `url("/bg.png")`,
+        background: `url("/bg.webp")`,
         minHeight: "100vh",
         backgroundSize: "100%",
         backgroundPosition: "left top",
@@ -23,6 +24,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <HomeBody />
+      <Footer />
     </div>
   );
 }

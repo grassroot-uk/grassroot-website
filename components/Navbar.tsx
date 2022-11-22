@@ -73,7 +73,7 @@ export default function WithSubnavigation() {
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
-          minW={useBreakpointValue({ base: "auto", lg: "150px" })}
+          minW={useBreakpointValue({ base: "auto", md: "150px" })}
         >
           <Account triedToEagerConnect={triedToEagerConnect} />
         </Stack>

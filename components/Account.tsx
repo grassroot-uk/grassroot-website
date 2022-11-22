@@ -2,6 +2,8 @@ import {
   Button,
   useBreakpointValue,
   useColorModeValue,
+  useMediaQuery,
+  useToken,
 } from "@chakra-ui/react";
 import { useWeb3React } from "@web3-react/core";
 import { UserRejectedRequestError } from "@web3-react/injected-connector";
@@ -12,6 +14,7 @@ import useMetaMaskOnboarding from "../hooks/useMetaMaskOnboarding";
 import { formatEtherscanLink, shortenHex } from "../util";
 import { Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { FaAddressCard } from "react-icons/fa";
 
 type AccountProps = {
   triedToEagerConnect: boolean;
@@ -36,6 +39,13 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
       stopOnboarding();
     }
   }, [active, error, stopOnboarding]);
+
+  const [isLessThan370] = useMediaQuery("(max-width: 370px)", {
+    ssr: true,
+    fallback: false, // return false on the server, and re-evaluate on the client side
+  });
+
+  const brandHexColor = useToken("colors", ["brand.700"])[0];
 
   const ENSName = useENSName(account || "");
 
@@ -106,7 +116,14 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
       rel={"noopener noreferrer"}
       color={"brand.700"}
     >
-      {ENSName || `${shortenHex(account, 4)}`} <ExternalLinkIcon />
+      {isLessThan370 ? (
+        <FaAddressCard
+          color={brandHexColor}
+          fontSize="1.25rem"
+        />
+      ) : (
+        ENSName || shortenHex(account, 4)
+      )}
     </Link>
   );
 };

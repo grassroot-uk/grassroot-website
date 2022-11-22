@@ -14,11 +14,10 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method == "POST") {
-    
     const body = JSON.parse(req.body);
     const { email, account } = body;
 
-    if (email && account) {
+    if (email) {
       apiInstance.setApiKey(
         SibApiV3Sdk.ContactsApiApiKeys.apiKey,
         process.env.SENDBLUE_API_KEY || ""
@@ -27,7 +26,9 @@ export default function handler(
       let createContact = new SibApiV3Sdk.CreateContact();
 
       createContact.email = (email as string) || "default@gmail.com";
-      createContact.attributes = { account: account };
+      if (account) {
+        createContact.attributes = { account: account };
+      }
       createContact.listIds = [5];
 
       apiInstance.createContact(createContact).then(
