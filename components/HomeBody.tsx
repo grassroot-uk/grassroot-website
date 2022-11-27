@@ -34,8 +34,7 @@ import { useWeb3React } from "@web3-react/core";
 const services = [
   {
     heading: "Register",
-    subText:
-      "Set up your DAOs as legal entities and protect your community",
+    subText: "Set up your DAOs as legal entities and protect your community",
     img: register,
     imgStyles: { marginTop: "-200px", zIndex: 0 },
   },
@@ -53,7 +52,7 @@ const services = [
     imgStyles: { marginTop: "-20px", zIndex: 0 },
   },
   {
-    heading: "Treasury Management",
+    heading: "Manage Treasury",
     subText: "Manage your DAO’s treasury by setting up streaming services",
     img: manage,
     imgStyles: { marginTop: "-20px", zIndex: 0 },
@@ -201,6 +200,15 @@ const HomeBody = () => {
           px={useBreakpointValue({ base: "20px", md: "100px" })}
         >
           The next generation of tooling services
+        </Text>
+        <Text
+          alignSelf={"center"}
+          textAlign={"center"}
+          fontSize={"md"}
+          mt={"20px"}
+          px={useBreakpointValue({ base: "20px", md: "50px" })}
+        >
+          Signup below to stay updated
         </Text>
         <Box my={useBreakpointValue({ base: "50px", lg: "70px" })} px={"10px"}>
           {isSent ? (

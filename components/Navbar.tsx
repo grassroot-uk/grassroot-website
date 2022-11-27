@@ -22,6 +22,7 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  ExternalLinkIcon,
 } from "@chakra-ui/icons";
 import Account from "./Account";
 import { useWeb3React, Web3ReactProvider } from "@web3-react/core";
@@ -75,6 +76,9 @@ export default function WithSubnavigation() {
           direction={"row"}
           minW={useBreakpointValue({ base: "auto", md: "150px" })}
         >
+          <Link href="https://app.grassroot.uk">
+            <ExternalLinkIcon />
+          </Link>
           <Account triedToEagerConnect={triedToEagerConnect} />
         </Stack>
       </Flex>
