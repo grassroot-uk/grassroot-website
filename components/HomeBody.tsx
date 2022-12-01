@@ -83,10 +83,6 @@ const HomeBody = () => {
   };
 
   const handleSubmitEmail = async () => {
-    if (!account && !metamaskOptional) {
-      onOpen();
-      return;
-    }
     setError("");
     console.log(email);
     if (emailValidation(email)) {
