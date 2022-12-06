@@ -7,7 +7,25 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head >
-        <Script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.0.0/cookie-consent.js" charset="UTF-8"></Script>
+        <Script 
+          type="text/javascript" 
+          src="https://www.freeprivacypolicy.com/public/cookie-consent/4.0.0/cookie-consent.js" 
+          charSet="UTF-8" 
+          strategy="afterInteractive"
+        ></Script>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_G_ANALYTICS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${process.env.NEXT_PUBLIC_G_ANALYTICS_ID}');
+          `}
+        </Script>
       </Head>
       <body>
         {/* 👇 Here's the script */}
