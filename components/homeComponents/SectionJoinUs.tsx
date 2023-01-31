@@ -17,7 +17,7 @@ const SectionJoinUs = () => {
         left={"0px"}
         height={"100%"}
         width={"100%"}
-        backgroundSize={"contain"}
+        backgroundSize={{ base: "cover", md: "contain" }}
       />
       <Box
         backgroundImage={"./light_blue_wavey_background-rl.png"}
@@ -27,7 +27,7 @@ const SectionJoinUs = () => {
         right={"0px"}
         height={"100%"}
         width={"100%"}
-        backgroundSize={"contain"}
+        backgroundSize={{ base: "cover", md: "contain" }}
         backgroundPosition={"right"}
       />
       <Box
