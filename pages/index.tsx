@@ -4,16 +4,11 @@ import Navbar from "../components/Navbar";
 import HomeBody from "../components/HomeBody";
 import Footer from "../components/Footer";
 
+import { Box } from "@chakra-ui/react";
+
 export default function Home() {
   return (
-    <div
-      style={{
-        background: `url("/bg.webp")`,
-        minHeight: "100vh",
-        backgroundSize: "100%",
-        backgroundPosition: "left top",
-      }}
-    >
+    <Box>
       <Head>
         <title>Grassroot</title>
         <meta
@@ -25,6 +20,6 @@ export default function Home() {
       <Navbar />
       <HomeBody />
       <Footer />
-    </div>
+    </Box>
   );
 }
