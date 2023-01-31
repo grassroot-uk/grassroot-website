@@ -29,12 +29,12 @@ export default function Document() {
       </Head>
       <body>
         {/* 👇 Here's the script */}
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} useColorModeValue={false} />
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Main />
         <NextScript />
-        <script async type="text/javascript" id="cookies-script" charset="UTF-8" src="/static/cookie-consent.js">
+        {/* <script async type="text/javascript" id="cookies-script" charset="UTF-8" src="/static/cookie-consent.js">
         </script>
-        <a href="#" id="open_preferences_center">Update cookies preferences</a>
+        <a href="#" id="open_preferences_center">Update cookies preferences</a> */}
       </body>
     </Html>
   );

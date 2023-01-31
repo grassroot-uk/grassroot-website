@@ -13,21 +13,17 @@ import {
 import * as React from "react";
 import { FaGithub } from "react-icons/fa";
 import { GiHighGrass } from "react-icons/gi";
-import GrassrootIcon from "../icons/grassroot";
 
 const Footer = () => (
   <Box
     as="footer"
     role="contentinfo"
-    borderTop={"1px"}
-    borderColor="gray.100"
     mt={{ base: "4", md: "6" }}
     py={{ base: "6", md: "8" }}
     px={{ base: "6", md: "8" }}
   >
     <Stack spacing={{ base: "4", md: "5" }} justify="center" align={"center"}>
       <Stack justify="center" direction="row" align="center">
-        <GrassrootIcon />
         <ButtonGroup variant="ghost">
           {/* <IconButton
             as="a"
@@ -43,7 +39,7 @@ const Footer = () => (
             aria-label="Email"
             icon={
               <GiHighGrass
-                color={useToken("colors", ["brand.700"])[0]}
+                color={useToken("colors", ["brand.300"])[0]}
                 fontSize="1.25rem"
               />
             }
@@ -51,13 +47,6 @@ const Footer = () => (
         </ButtonGroup>
       </Stack>
       <Stack>
-        <Text fontSize="sm" color="subtle" textAlign={"center"}>
-          Contact us @{" "}
-          <Link color={"brand.900"} href="mailto:team@grassroot.uk">
-            team@grassroot.uk
-          </Link>{" "}
-          to know more.
-        </Text>
         <Text fontSize="sm" color="subtle" textAlign={"center"}>
           &copy; {new Date().getFullYear()} Grassroot Inc. All rights reserved.
         </Text>
