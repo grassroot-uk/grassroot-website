@@ -9,8 +9,7 @@ export default function Document() {
       <Head >
         <Script 
           type="text/javascript" 
-          src="https://www.freeprivacypolicy.com/public/cookie-consent/4.0.0/cookie-consent.js" 
-          charSet="UTF-8" 
+          src="https://www.freeprivacypolicy.com/public/cookie-consent/4.0.0/cookie-consent.js"
           strategy="afterInteractive"
         ></Script>
         <Script

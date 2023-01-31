@@ -24,11 +24,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Hero from "./homeComponents/Hero";
+import SectionCards from "./homeComponents/SectionCards";
 
 const HomeBody = () => {
   return (
     <Box w={"100%"}>
       <Hero />
+      <SectionCards />
     </Box>  
   );
 };

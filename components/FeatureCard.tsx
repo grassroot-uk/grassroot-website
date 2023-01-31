@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardBody,
   Heading,
@@ -10,35 +11,61 @@ import React from "react";
 
 export type IFeatureCard = {
   heading: string;
-  subText: string;
-  img: any;
-  imgStyles: any;
+  description: string;
+  top: string;
+  image: any;
+  imgStyles?: any;
 };
 
-const FeatureCard: React.FC<IFeatureCard> = ({ heading, subText, img, imgStyles }) => {
+const FeatureCard: React.FC<IFeatureCard> = ({
+  heading,
+  description,
+  top,
+  image,
+  imgStyles,
+}) => {
   return (
-    <Card h={"350px"} overflow={"hidden"} bg={"white"}>
-      <CardBody zIndex={2}>
+    <Card
+      minH={"300px"}
+      overflow={"hidden"}
+      bg={"white"}
+      p={"15px"}
+      border={"1px solid"}
+      borderColor={"rgba(0,0,0,0.1)"}
+      boxShadow={"2px 2px 4px 0 rgb(0 0 0 / 25%)"}
+    >
+      <Text color={"gray.600"}>{top}</Text>
+      <Box
+        mb={useBreakpointValue({
+          base: "10px",
+          md: "15px",
+          lg: "18px",
+        })}
+        display={"flex"}
+        alignItems={"center"}
+        my={{ base: "10px", md: "30px" }}
+      >
+        <Image
+          src={image}
+          alt={heading}
+          style={{ maxHeight: "50px", maxWidth: "50px" }}
+        />
         <Heading
-          textAlign={"center"}
-          fontSize={useBreakpointValue({ base: "xl", md: "2xl" })}
-          mb={useBreakpointValue({
-            base: "10px",
-            md: "15px",
-            lg: "18px",
-          })}
+          ml={"15px"}
+          fontSize={useBreakpointValue({ base: "xl", md: "3xl" })}
+          fontWeight={"semibold"}
+          color={"gray.700"}
         >
           {heading}
         </Heading>
-        <Text
-          textAlign={"center"}
-          fontSize={useBreakpointValue({ base: "14px", md: "18px" })}
-          lineHeight={useBreakpointValue({ base: "19px", md: "24px" })}
-        >
-          {subText}
-        </Text>
-      </CardBody>
-      <Image src={img} alt={heading} style={{...imgStyles}}/>
+      </Box>
+      <Text
+        color={"gray.700"}
+        fontSize={useBreakpointValue({ base: "10px", md: "14px" })}
+        lineHeight={useBreakpointValue({ base: "15px", md: "20px" })}
+      >
+        {description}
+      </Text>
     </Card>
   );
 };
