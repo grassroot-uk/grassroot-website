@@ -13,7 +13,11 @@ import {
 import React from "react";
 import useFontSize from "../hooks/useFontSize";
 
-const SignupForm = () => {
+interface ISignupForm {
+  buttonText?: string;
+}
+
+const SignupForm: React.FC<ISignupForm> = ({ buttonText }) => {
   const [email, setEmail] = React.useState("");
   const [error, setError] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
@@ -64,7 +68,7 @@ const SignupForm = () => {
       Thankyou for signing up. We will keep you updated about grassroot.
     </Text>
   ) : (
-    <FormControl isInvalid={error.length !== 0} w={"auto"}>
+    <FormControl isInvalid={error.length !== 0} w={"auto"} margin={"auto"}>
       <Flex
         justifyContent={"center"}
         alignItems={"center"}
@@ -113,7 +117,7 @@ const SignupForm = () => {
               thickness={16}
             />
           ) : (
-            "Join the waitlist"
+            buttonText || "Join the waitlist"
           )}
         </Button>
       </Flex>

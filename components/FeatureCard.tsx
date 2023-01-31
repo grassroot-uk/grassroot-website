@@ -26,7 +26,7 @@ const FeatureCard: React.FC<IFeatureCard> = ({
 }) => {
   return (
     <Card
-      minH={"300px"}
+      minH={{base: "200px", md: "300px"}}
       overflow={"hidden"}
       bg={"white"}
       p={"15px"}
@@ -61,7 +61,7 @@ const FeatureCard: React.FC<IFeatureCard> = ({
       </Box>
       <Text
         color={"gray.700"}
-        fontSize={useBreakpointValue({ base: "10px", md: "14px" })}
+        fontSize={useBreakpointValue({ base: "14px", md: "14px" })}
         lineHeight={useBreakpointValue({ base: "15px", md: "20px" })}
       >
         {description}
