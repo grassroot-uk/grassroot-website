@@ -8,6 +8,7 @@ const SectionJoinUs = () => {
       backgroundColor={"brand.800"}
       position={"relative"}
       mt={{ base: "50px", md: "80px" }}
+      overflow={"hidden"}
     >
       <Box
         backgroundImage={"./light_blue_wavey_background-lr.png"}
@@ -18,6 +19,7 @@ const SectionJoinUs = () => {
         height={"100%"}
         width={"100%"}
         backgroundSize={{ base: "cover", md: "contain" }}
+        minWidth={"1024px"}
       />
       <Box
         backgroundImage={"./light_blue_wavey_background-rl.png"}
@@ -28,7 +30,9 @@ const SectionJoinUs = () => {
         height={"100%"}
         width={"100%"}
         backgroundSize={{ base: "cover", md: "contain" }}
+        minWidth={"1024px"}
         backgroundPosition={"right"}
+        display={{base: "none", md: "block"}}
       />
       <Box
         p={"10px"}

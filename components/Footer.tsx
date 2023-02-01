@@ -25,11 +25,11 @@ const Footer = () => (
     px={{ base: "6", md: "8" }}
   >
     <Stack
-      justify="space-between"
+      justify="center"
       direction={{ base: "column", md: "row" }}
       align="center"
     >
-      <List
+      {/* <List
         flexDirection={{ base: "column", md: "row" }}
         display={"flex"}
         justifyContent={"center"}
@@ -47,7 +47,7 @@ const Footer = () => (
         <ListItem p={"5px"} as={"a"}>
           Resources
         </ListItem>
-      </List>
+      </List> */}
       <ButtonGroup variant="ghost">
         <IconButton
           as="a"
